@@ -1,0 +1,4 @@
+@girs/
+node_modules/
+.direnv
+tsconfig.json
