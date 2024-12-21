@@ -49,11 +49,18 @@ export function StartMenu(gdkmonitor: Gdk.Monitor): Widget.Window {
 			keymode={Astal.Keymode.EXCLUSIVE}
 			onKeyPressEvent={(_, event) => {
 				if (event.get_keyval()[1] === Gdk.KEY_Escape) {
-					closeStartMenu();
+					if(stack.get_visible_child_name() === "start-menu"){
+						closeStartMenu();
+					} else {
+						stack.set_visible_child_name("start-menu")
+					}
 					searchText.set("");
 					searchBox.set_text("");
-				} else if(searchBox.get_text_length() === 0){
-					const character = String.fromCodePoint(Gdk.keyval_to_unicode(event.get_keyval()[1]))
+				} else if(!searchBox.isFocus){
+					const charCode = Gdk.keyval_to_unicode(event.get_keyval()[1]);
+
+					if(!charCode || charCode < 32 || charCode > 126) return;
+					const character = String.fromCodePoint(charCode)
 					const newText = searchText.get()+character;
 					searchText.set(newText);
 					searchBox.set_text(newText);
