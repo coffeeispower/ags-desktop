@@ -26,9 +26,9 @@
         entry = "app.ts";
 
         # additional libraries and executables to add to gjs' runtime
-        extraPackages = [
-          # ags.packages.${system}.battery
-          # pkgs.fzf
+        extraPackages = with ags.packages.${system}; [
+          hyprland
+          battery
         ];
       };
     };
@@ -39,12 +39,7 @@
           pkgs.biome
           pkgs.nodePackages.nodemon
           pkgs.just
-          # includes astal3 astal4 astal-io by default
-          (ags.packages.${system}.default.override {
-            extraPackages = [
-              # TODO
-            ];
-          })
+          ags.packages.${system}.agsFull
         ];
       };
     };

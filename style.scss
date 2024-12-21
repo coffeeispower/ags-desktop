@@ -1,7 +1,177 @@
-// https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
-$theme_fg_color: "@theme_fg_color";
-$theme_bg_color: "@theme_bg_color";
+@use "sass:string";
+$base00: #{"@base00"};
+$base01: #{"@base01"};
+$base02: #{"@base02"};
+$base03: #{"@base03"};
+$base04: #{"@base04"};
+$base05: #{"@base05"};
+$base06: #{"@base06"};
+$base07: #{"@base07"};
+$base08: #{"@base08"};
+$base09: #{"@base09"};
+$base0A: #{"@base0A"};
+$base0B: #{"@base0B"};
+$base0C: #{"@base0C"};
+$base0D: #{"@base0D"};
+$base0E: #{"@base0E"};
+$base0F: #{"@base0F"};
 
+$bar-height: 50px;
+$start-menu-width: 55px;
+$workspace-overview-button-width: 70px;
 
-.workspaces-window {
+$border-radius: 10px;
+
+@function gtkalpha($c, $a) {
+    @return string.unquote("alpha(#{$c},#{$a})");
+}
+
+window.bar {
+    button {
+        
+        all: unset;
+        min-height: $bar-height;
+        background-color: $base00;
+
+        &:hover {
+            background-color: $base01;
+        }
+        &.start-menu {
+            border-radius:  $border-radius 0rem 0rem $border-radius;
+            transition: font-size 50ms ease-in-out;
+            font-size: 125%;
+            min-width: $start-menu-width;
+            color: $base07;
+
+            &:hover {
+                font-size: 150%;
+            }
+            &:active {
+                font-size: 100%;
+            }
+        }
+        &.workspace-overview {
+            border-radius: 0rem $border-radius $border-radius 0rem;
+            min-width: $workspace-overview-button-width;
+            color: $base05;
+        }
+    }
+}
+window.start-menu {
+    box-shadow: 2px 3px 8px 0 gtkalpha(black, .4);
+    .start-menu-container {
+        $app-icon-height: 85px;
+        border-radius: $border-radius;
+        min-width: 700px;
+        background-color: $base00;
+        border: 2px $base04 solid;
+        .start-menu-page {
+            padding: 2rem;
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: $base05;
+            margin-bottom: 16px;
+        }
+        .app-icon, .folder-icon {
+            all: unset;
+            min-width: 70px;
+            min-height: $app-icon-height;
+            border: none;
+            border-radius: 1rem;
+            font-size: small;
+            color: $base05;
+            transition: all 150ms ease-in-out;
+            padding: 10px;
+            font-weight: 500;
+
+            icon {
+                min-width: 3rem;
+                min-height: 3rem;
+                font-size: 3rem;
+                transition: all 150ms ease-in-out;
+            }
+            &:hover {
+                background-color: $base02;
+            }
+            &:active {
+                background-color: $base03;
+                icon {
+                    font-size: 2rem;
+                }
+            }
+        }
+        .folder-icon {
+            color: $base05;
+        }
+        box.app-grid {
+            min-height: calc(($app-icon-height + 40px) * 2);
+        }
+        button.show-all-apps {
+            all: unset;
+            background-color: $base01;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 150ms ease-in-out;
+            color: $base05;
+            &:hover {
+                background-color: $base02;
+            }
+            &:active {
+                background-color: $base03;
+            }
+        }
+        
+        box.Applauncher {
+            border-radius: 11px;
+            entry {
+                margin-bottom: .8rem;
+            }
+
+            button {
+                min-width: 0;
+                min-height: 0;
+                padding: .5rem;
+                background: none;
+                transition: all 100ms ease-in-out;
+                border-radius: 0px;
+                &:focus {
+                    background-color: $base05;
+                    color: $base00;
+
+                    label.description {
+                        color: gtkalpha($base00, .8);
+                    }
+                }
+                icon {
+                    font-size: 3em;
+                    margin-right: .3rem;
+                }
+
+                label.name {
+                    font-weight: bold;
+                    font-size: 1.1em
+                }
+
+                label.description {
+                    color: gtkalpha($base05, .8);
+                }
+            }
+
+            box.not-found {
+                padding: 1rem;
+
+                icon {
+                    font-size: 6em;
+                    color: gtkalpha($base05, .7);
+                }
+
+                label {
+                    color: gtkalpha($base05, .9);
+                    font-size: 1.2em;
+                }
+            }
+        }
+    }
 }

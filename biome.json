@@ -14,7 +14,8 @@
     "rules": {
       "recommended": true,
       "correctness": {
-        "noUnusedImports": "warn"
+        "noUnusedImports": "warn",
+        "useJsxKeyInIterable": "off"
       },
       "style": {
         "noNonNullAssertion": "off"
