@@ -2,6 +2,8 @@ import { App, Astal, Gdk, Gtk, type Widget } from 'astal/gtk3';
 import { RecentApplications } from './RecentApps';
 import { Folders } from './Folders';
 import Applauncher from './AllApps';
+import type { Entry } from 'astal/gtk3/widget';
+import type Variable from 'astal/variable';
 
 let stack: Gtk.Stack | null;
 function getStartMenu() {
@@ -32,6 +34,9 @@ export function showStartMenu(gdkmonitor: Gdk.Monitor) {
 	startMenuWidget.show();
 }
 export function StartMenu(gdkmonitor: Gdk.Monitor): Widget.Window {
+	let searchBox: Entry;
+	let searchText: Variable<string>;
+	let window: Widget.Window;
 	return (
 		<window
 			className="start-menu"
@@ -45,14 +50,24 @@ export function StartMenu(gdkmonitor: Gdk.Monitor): Widget.Window {
 			onKeyPressEvent={(_, event) => {
 				if (event.get_keyval()[1] === Gdk.KEY_Escape) {
 					closeStartMenu();
+					searchText.set("");
+					searchBox.set_text("");
+				} else if(searchBox.get_text_length() === 0){
+					const character = String.fromCodePoint(Gdk.keyval_to_unicode(event.get_keyval()[1]))
+					const newText = searchText.get()+character;
+					searchText.set(newText);
+					searchBox.set_text(newText);
+					searchBox.grab_focus();
+					stack.set_visible_child_name("all-apps");
 				}
 			}}
+			setup={(w) => {window = w;}}
 		>
 			<box className="start-menu-container">
 				<stack
 					transitionType={Gtk.StackTransitionType.SLIDE_LEFT_RIGHT}
 					visibleChildName={'start-menu'}
-					setup={s => {
+					setup={(s) => {
 						stack = s;
 					}}
 				>
@@ -63,7 +78,10 @@ export function StartMenu(gdkmonitor: Gdk.Monitor): Widget.Window {
 						spacing={16}
 					>
 						<RecentApplications
-							showAllApps={() => stack.set_visible_child_name('all-apps')}
+							showAllApps={() => {
+								stack.set_visible_child_name('all-apps')
+								searchBox.grab_focus_without_selecting();
+							}}
 						/>
 						<Folders />
 					</box>
@@ -74,12 +92,19 @@ export function StartMenu(gdkmonitor: Gdk.Monitor): Widget.Window {
 						spacing={8}
 					>
 						<button
-							onClicked={() => stack.set_visible_child_name('start-menu')}
+							onClicked={() => {
+								stack.set_visible_child_name('start-menu')
+								searchText.set("");
+								searchBox.set_text("");
+							}}
 							halign={Gtk.Align.START}
 						>
 							← Voltar
 						</button>
-						<Applauncher/>
+						<Applauncher setup={(e, t) => {
+							searchBox = e;
+							searchText = t;
+						}}/>
 						
 					</box>
 				</stack>
