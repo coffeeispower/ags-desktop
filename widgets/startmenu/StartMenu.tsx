@@ -1,9 +1,9 @@
 import { App, Astal, Gdk, Gtk } from 'astal/gtk3';
-import { RecentApplications } from './RecentApps';
-import { Folders } from './Folders';
-import Applauncher from './AllApps';
 import type { Entry } from 'astal/gtk3/widget';
 import type Variable from 'astal/variable';
+import Applauncher from './AllApps';
+import { Folders } from './Folders';
+import { RecentApplications } from './RecentApps';
 let stack: Gtk.Stack | null;
 function getStartMenu() {
 	return App.get_window('start-menu') as Astal.Window | null;
@@ -17,7 +17,7 @@ export function toggleStartMenu() {
 }
 export function closeStartMenu() {
 	stack?.set_visible_child_name('empty');
-	setTimeout(() => App.get_window('start-menu')?.hide(), 300)
+	setTimeout(() => App.get_window('start-menu')?.hide(), 300);
 }
 export function showStartMenu() {
 	getStartMenu().show();
@@ -33,12 +33,12 @@ export function StartMenu() {
 			application={App}
 			keymode={Astal.Keymode.EXCLUSIVE}
 			onShow={() => {
-				stack?.set_visible_child_name('start-menu')
+				stack?.set_visible_child_name('start-menu');
 			}}
-			onHide={(w) => {
-				if(stack.get_visible_child_name() !== "empty") {
+			onHide={w => {
+				if (stack.get_visible_child_name() !== 'empty') {
 					w.show();
-					closeStartMenu()
+					closeStartMenu();
 				}
 			}}
 			onKeyPressEvent={(_, event) => {
@@ -72,7 +72,6 @@ export function StartMenu() {
 					}}
 					transitionDuration={300}
 				>
-					
 					<box
 						name="start-menu"
 						className="page start-menu-page"
@@ -87,7 +86,12 @@ export function StartMenu() {
 						/>
 						<Folders />
 					</box>
-					<box name="all-apps" className="start-menu-page page " vertical spacing={8}>
+					<box
+						name="all-apps"
+						className="start-menu-page page "
+						vertical
+						spacing={8}
+					>
 						<button
 							onClicked={() => {
 								stack.set_visible_child_name('start-menu');
@@ -105,7 +109,7 @@ export function StartMenu() {
 							}}
 						/>
 					</box>
-					<box name="empty"/>
+					<box name="empty" />
 				</stack>
 			</box>
 		</window>

@@ -1,22 +1,15 @@
-import { App, Astal, Gtk, type Gdk } from 'astal/gtk3';
-import Hyprland from 'gi://AstalHyprland';
+import { bind } from 'astal/binding';
+import { App, Astal, type Gdk, Gtk } from 'astal/gtk3';
+import { exec } from 'astal/process';
+import Variable from 'astal/variable';
+import { colorScheme, isLightTheme } from '../../colors';
 import {
 	filterNonEmptyWorkspaces,
 	focusedClientTitle,
 	toggleWorkspaceOverview,
 	workspaces,
 } from '../../utils/hyprland';
-import { bind } from 'astal/binding';
 import { toggleStartMenu } from '../startmenu/StartMenu';
-import {
-	generateNeomorphismStyleCode,
-	LightSource,
-	NeomorphismShape,
-} from '../../utils/neomorphism-generator';
-import { colorScheme, isLightTheme } from '../../colors';
-import Variable from 'astal/variable';
-import { exec } from 'astal/process';
-import { getBestContrastColor } from '../../utils/contrast-checker';
 
 export function OpenWorkspaceOverviewButton() {
 	return (

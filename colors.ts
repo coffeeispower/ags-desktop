@@ -21,12 +21,12 @@ export type ColorScheme = {
 export let colorScheme: ColorScheme;
 function tryLoadFile(file: string): ColorScheme | null {
 	const colorsFileString = AstalIO.read_file(file);
-	if(!colorsFileString) {
+	if (!colorsFileString) {
 		return null;
 	}
 	try {
-		return JSON.parse(colorsFileString)
-	} catch(e) {
+		return JSON.parse(colorsFileString);
+	} catch (e) {
 		console.warn(`Failed to load colors file "${file}": ${e}`);
 		return null;
 	}
@@ -50,7 +50,8 @@ const fallback = {
 	base0F: '#f2cdcd',
 };
 colorScheme = tryLoadFile(`${SRC}/colors.json`);
-if(!colorScheme) colorScheme = tryLoadFile('/etc/stylix/generated.json')
-if(!colorScheme) colorScheme = fallback
+if (!colorScheme) colorScheme = tryLoadFile('/etc/stylix/generated.json');
+if (!colorScheme) colorScheme = fallback;
 
-export const isLightTheme = getBestContrastColor(colorScheme.base00) === "black";
+export const isLightTheme =
+	getBestContrastColor(colorScheme.base00) === 'black';

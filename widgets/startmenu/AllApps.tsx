@@ -1,9 +1,9 @@
 import AstalApps from 'gi://AstalApps?version=0.1';
-import { closeStartMenu } from './StartMenu';
 import { Gtk } from 'astal/gtk3';
+import type { Entry } from 'astal/gtk3/widget';
 import Variable from 'astal/variable';
 import { updateRecentApps } from './RecentApps';
-import type { Entry } from 'astal/gtk3/widget';
+import { closeStartMenu } from './StartMenu';
 
 function AppButton({ app }: { app: AstalApps.Application }) {
 	return (
@@ -33,7 +33,9 @@ function AppButton({ app }: { app: AstalApps.Application }) {
 	);
 }
 
-export default function Applauncher(props: {setup?: (e: Entry, text: Variable<string>) => void}) {
+export default function Applauncher(props: {
+	setup?: (e: Entry, text: Variable<string>) => void;
+}) {
 	const { CENTER } = Gtk.Align;
 	const apps = new AstalApps.Apps();
 
@@ -57,8 +59,8 @@ export default function Applauncher(props: {setup?: (e: Entry, text: Variable<st
 				text={text()}
 				onChanged={self => text.set(self.text)}
 				onActivate={onEnter}
-				setup={(e) => {
-					props.setup(e, text)
+				setup={e => {
+					props.setup(e, text);
 				}}
 			/>
 			<scrollable vexpand>

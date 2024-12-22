@@ -1,8 +1,8 @@
-import { Gtk } from 'astal/gtk3';
 import AstalApps from 'gi://AstalApps?version=0.1';
-import { closeStartMenu } from './StartMenu';
-import { FlowBox } from '../flowbox';
+import { Gtk } from 'astal/gtk3';
 import Variable from 'astal/variable';
+import { FlowBox } from '../flowbox';
+import { closeStartMenu } from './StartMenu';
 
 function AppIcon({ app }: { app: AstalApps.Application }) {
 	return (
@@ -47,15 +47,15 @@ export function getRecentApps() {
 	const apps = new AstalApps.Apps();
 	return apps
 		.get_list()
-		.filter((app) => app.frequency)
+		.filter(app => app.frequency)
 		.sort((app1, app2) => Math.sign(app2.frequency - app1.frequency))
-		.slice(0, 18)
+		.slice(0, 18);
 }
 const recentApps = Variable(getRecentApps());
 export function updateRecentApps() {
 	recentApps.set(getRecentApps());
 }
-export function RecentApplications(props: {showAllApps: () => void}) {
+export function RecentApplications(props: { showAllApps: () => void }) {
 	return (
 		<box vertical>
 			<label
@@ -72,10 +72,9 @@ export function RecentApplications(props: {showAllApps: () => void}) {
 					valign={Gtk.Align.START}
 					homogeneous
 				>
-					{
-						recentApps(recentApps => recentApps.map(app => (
-							<AppIcon app={app} />
-						)))}
+					{recentApps(recentApps =>
+						recentApps.map(app => <AppIcon app={app} />),
+					)}
 				</FlowBox>
 			</box>
 			<button

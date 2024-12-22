@@ -1,8 +1,3 @@
-// Credit: Original code by Adam Giebl (https://github.com/adamgiebl/neumorphism)
-// Converted to TypeScript for AGS by Tiago Dinis using ChatGPT
-
-import { colorScheme } from "../colors";
-
 // Define the input types for the function
 export type NeomorphismOptions = {
 	/**
@@ -111,7 +106,7 @@ function adjustColorLuminance(hex: string, lum: number): string {
 	let rgb = '#';
 	for (let i = 0; i < 3; i++) {
 		const c = Number.parseInt(expandedHex.substr(i * 2, 2), 16);
-		const clamped = Math.min(Math.max(0, c + (c * lum)), 255);
+		const clamped = Math.min(Math.max(0, c + c * lum), 255);
 		const cString = Math.round(clamped).toString(16);
 		rgb += `00${cString}`.substr(cString.length);
 	}
@@ -119,18 +114,15 @@ function adjustColorLuminance(hex: string, lum: number): string {
 	return rgb;
 }
 
-export function generateNeomorphismStyles(
-	{
-		color,
-		distance,
-		blur,
-		radius,
-		shape,
-		activeLightSource,
-		intensity,
-	}: NeomorphismOptions,
-): NeomorphismStyles {
-
+export function generateNeomorphismStyles({
+	color,
+	distance,
+	blur,
+	radius,
+	shape,
+	activeLightSource,
+	intensity,
+}: NeomorphismOptions): NeomorphismStyles {
 	const darkColor = adjustColorLuminance(color, intensity * -1);
 	const lightColor = adjustColorLuminance(color, intensity);
 
@@ -166,10 +158,12 @@ export function generateNeomorphismStyles(
 		boxShadow: `${firstBoxShadow}, ${secondBoxShadow}`,
 	};
 }
-export function generateNeomorphismStyleCode(options: NeomorphismOptions): string{
+export function generateNeomorphismStyleCode(
+	options: NeomorphismOptions,
+): string {
 	const styles = generateNeomorphismStyles(options);
-	
-	const code= `
+
+	const code = `
 		background: ${styles.background};
 		border-radius: ${styles.borderRadius};
 		box-shadow: ${styles.boxShadow};
