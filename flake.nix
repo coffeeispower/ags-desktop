@@ -22,7 +22,7 @@
       default = ags.lib.bundle {
         inherit pkgs;
         src = ./.;
-        name = "bar";
+        name = "ags-desktop";
         entry = "app.ts";
 
         # additional libraries and executables to add to gjs' runtime
