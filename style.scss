@@ -66,20 +66,26 @@ entry {
             background-color: $base01;
         }
         &.start-menu {
-            border-radius:  $border-radius 0rem 0rem $border-radius;
-            transition: font-size 50ms ease-in-out;
+            border-radius:  $border-radius;
+            transition: all 50ms ease-in-out;
             font-size: 125%;
             min-width: $start-menu-width;
             color: $base07;
+            label {
+                margin-left: -8px;
+            }
             &:hover {
                 font-size: 150%;
             }
             &:active {
                 font-size: 100%;
+                label {
+                    margin-left: -5px;
+                }
             }
         }
         &.workspace-overview {
-            border-radius: 0rem $border-radius $border-radius 0rem;
+            border-radius: $border-radius;
             min-width: $workspace-overview-button-width;
             color: $base05;
         }

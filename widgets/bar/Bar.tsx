@@ -10,6 +10,8 @@ import {
 	workspaces,
 } from '../../utils/hyprland';
 import { toggleStartMenu } from '../startmenu/StartMenu';
+import { formatDate, formatTime, getWeekday } from '../../utils/dates';
+import { generateNeomorphismStyleCode, LightSource, NeomorphismShape } from '../../utils/neomorphism-generator';
 
 export function OpenWorkspaceOverviewButton() {
 	return (
@@ -36,24 +38,7 @@ export function StartMenuButton() {
 	);
 }
 export function Bar(gdkmonitor: Gdk.Monitor) {
-	// const rightSideNeomorphismCss = generateNeomorphismStyleCode({
-	// 	color: `#${colorScheme.base00}`,
-	// 	blur: 10,
-	// 	radius: 10,
-	// 	activeLightSource: LightSource.TopLeft,
-	// 	distance: 3,
-	// 	intensity: 0.1,
-	// 	shape: NeomorphismShape.Flat,
-	// });
-	const shadowCss = isLightTheme
-		? `
-		box-shadow: 0px 0px 10px alpha(@base02, 1);
-		border-radius: 10px;
-	`
-		: `
-		box-shadow: 0px 0px 10px alpha(black, 0.2);
-		border-radius: 10px;
-	`;
+
 	return (
 		<window
 			gdkmonitor={gdkmonitor}
@@ -67,27 +52,29 @@ export function Bar(gdkmonitor: Gdk.Monitor) {
 			css={`background-color: #${colorScheme.base00}`}
 		>
 			<centerbox css="padding-left: 20px; padding-bottom: 10px; padding-top: 10px;">
-				<box className="right-side" css={shadowCss} halign={Gtk.Align.START}>
+				<box className="right-side" halign={Gtk.Align.START}>
 					<StartMenuButton gdkmonitor={gdkmonitor} />
 					<OpenWorkspaceOverviewButton />
-				</box>
-				{focusedClientTitle(title =>
+					{focusedClientTitle(title =>
 					title ? (
-						<box className="window-title" spacing={16} css={shadowCss}>
-							󰘔 {title}
+						<box className="window-title" spacing={16}>
+							{title}
 						</box>
 					) : (
 						<box />
 					),
 				)}
+				</box>
+				<box/>
 
 				<box
 					className="clock"
 					halign={Gtk.Align.END}
-					css={shadowCss}
 					marginEnd={20}
+					vertical
 				>
-					{Variable(exec('date')).poll(1000, 'date')()}
+					<label halign={Gtk.Align.END} label={Variable("").poll(60000, () => formatTime())()}/>
+					<label halign={Gtk.Align.END} label={Variable("").poll(60000, () => `${getWeekday("long")}, ${formatDate()}`)()}/>
 				</box>
 			</centerbox>
 		</window>
