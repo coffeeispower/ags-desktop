@@ -3,7 +3,7 @@ import { colorScheme } from './colors';
 import style from './style.scss';
 import { Bar } from './widgets/bar/Bar';
 import './utils/neomorphism-generator';
-import { StartMenu } from './widgets/startmenu/StartMenu';
+import { showStartMenu, StartMenu, toggleStartMenu } from './widgets/startmenu/StartMenu';
 App.start({
 	icons: `${SRC}/icons`,
 	css: `
@@ -25,6 +25,12 @@ App.start({
         @define-color base0F #${colorScheme.base0F};
         ${style}
     `,
+	requestHandler(request, res) {
+		if(request === "start-menu") {
+			toggleStartMenu();
+			res("ok");
+		}
+	},
 	main() {
 		StartMenu();
 		// This creates all the widgets that need to appear in all desktops
