@@ -35,7 +35,11 @@ export function StartMenu() {
 			onShow={() => {
 				stack?.set_visible_child_name('start-menu')
 			}}
-			onHide={() => {
+			onHide={(w) => {
+				if(stack.get_visible_child_name() !== "empty") {
+					w.show();
+					closeStartMenu()
+				}
 			}}
 			onKeyPressEvent={(_, event) => {
 				if (event.get_keyval()[1] === Gdk.KEY_Escape) {
