@@ -31,12 +31,12 @@ export function OpenWorkspaceOverviewButton() {
 		</button>
 	);
 }
-export function StartMenuButton({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) {
+export function StartMenuButton() {
 	return (
 		<button
 			className="start-menu"
 			focusOnClick={false}
-			onClicked={() => toggleStartMenu(gdkmonitor)}
+			onClicked={() => toggleStartMenu()}
 		>
 			{''}
 		</button>
