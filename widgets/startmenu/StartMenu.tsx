@@ -65,7 +65,7 @@ export function StartMenu() {
 		>
 			<box className="start-menu-container">
 				<stack
-					transitionType={Gtk.StackTransitionType.SLIDE_LEFT_RIGHT}
+					transitionType={Gtk.StackTransitionType.SLIDE_UP_DOWN}
 					visibleChildName={'empty'}
 					setup={s => {
 						stack = s;
