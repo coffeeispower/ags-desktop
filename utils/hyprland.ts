@@ -32,6 +32,6 @@ export const focusedClientTitle = Variable(hyprland.focusedClient?.title);
 hyprland.connect("event", (hyprland, event) => {
     if(["activewindowv2", "windowtitlev2"].includes(event)){
         focusedClient.set(hyprland.focusedClient);
-        focusedClientTitle.set(hyprland.focusedClient.title)
+        focusedClientTitle.set(hyprland.focusedClient?.title)
     }
 })

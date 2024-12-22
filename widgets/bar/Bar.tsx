@@ -52,10 +52,12 @@ export function Bar(gdkmonitor: Gdk.Monitor) {
 	// 	intensity: 0.1,
 	// 	shape: NeomorphismShape.Flat,
 	// });
-	const shadowCss = isLightTheme ? `
+	const shadowCss = isLightTheme
+		? `
 		box-shadow: 0px 0px 10px alpha(@base02, 1);
 		border-radius: 10px;
-	` : `
+	`
+		: `
 		box-shadow: 0px 0px 10px alpha(black, 0.2);
 		border-radius: 10px;
 	`;
@@ -72,22 +74,20 @@ export function Bar(gdkmonitor: Gdk.Monitor) {
 			css={`background-color: #${colorScheme.base00}`}
 		>
 			<centerbox css="padding-left: 20px; padding-bottom: 10px; padding-top: 10px;">
-				<box
-					className="right-side"
-					css={shadowCss}
-					halign={Gtk.Align.START}
-				>
+				<box className="right-side" css={shadowCss} halign={Gtk.Align.START}>
 					<StartMenuButton gdkmonitor={gdkmonitor} />
 					<OpenWorkspaceOverviewButton />
 				</box>
-				<box
-					className="window-title"
-					spacing={16}
-					css={shadowCss}
-				>
-					󰘔
-					{focusedClientTitle()}
-				</box>
+				{focusedClientTitle(title =>
+					title ? (
+						<box className="window-title" spacing={16} css={shadowCss}>
+							󰘔 {title}
+						</box>
+					) : (
+						<box />
+					),
+				)}
+
 				<box
 					className="clock"
 					halign={Gtk.Align.END}
