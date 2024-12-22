@@ -70,6 +70,7 @@ export function Bar(gdkmonitor: Gdk.Monitor) {
 				<box
 					className="clock"
 					halign={Gtk.Align.END}
+					valign={Gtk.Align.CENTER}
 					marginEnd={20}
 					vertical
 				>
