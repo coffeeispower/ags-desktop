@@ -27,6 +27,7 @@ function AppIcon({ app }: { app: AstalApps.Application }) {
 					icon={app.iconName}
 					halign={Gtk.Align.CENTER}
 					valign={Gtk.Align.CENTER}
+					className="app-button-icon"
 				/>
 				<label
 					halign={Gtk.Align.CENTER}

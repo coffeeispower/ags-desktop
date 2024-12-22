@@ -25,13 +25,42 @@ $border-radius: 10px;
 @function gtkalpha($c, $a) {
     @return string.unquote("alpha(#{$c},#{$a})");
 }
+window {
+    all: unset;    
 
-window.bar {
+}
+
+button {
+    all: unset;
+    background-color: $base01;
+    padding: 0.5rem 1rem;
+    border-radius: $border-radius;
+    transition: all 150ms ease-in-out;
+    color: $base05;
+    &:hover {
+        background-color: $base02;
+    }
+    &:active {
+        background-color: $base03;
+    }
+}
+entry {
+    background-color: $base01;
+    border-radius: $border-radius;
+    border: transparent 4px solid;
+    &:focus {
+        border: $base02 4px solid;
+    }
+}
+.window-title, .clock {
+    padding: 0px 1rem;
+    color: $base05
+}
+.right-side {
     button {
         
         all: unset;
         min-height: $bar-height;
-        background-color: $base00;
 
         &:hover {
             background-color: $base01;
@@ -42,7 +71,6 @@ window.bar {
             font-size: 125%;
             min-width: $start-menu-width;
             color: $base07;
-
             &:hover {
                 font-size: 150%;
             }
@@ -58,15 +86,17 @@ window.bar {
     }
 }
 window.start-menu {
-    box-shadow: 2px 3px 8px 0 gtkalpha(black, .4);
     .start-menu-container {
-        $app-icon-height: 85px;
-        border-radius: $border-radius;
-        min-width: 700px;
-        background-color: $base00;
-        border: 2px $base04 solid;
-        .start-menu-page {
+        $app-icon-height: 7rem;
+        .page {
             padding: 2rem;
+            box-shadow: 0px 0px 10px black;
+            margin-bottom: 30px;
+            margin-right: 30px;
+            border-bottom-right-radius: $border-radius;
+            min-width: 700px;
+            background-color: $base00;
+            
         }
         .section-title {
             font-size: 20px;
@@ -86,19 +116,45 @@ window.start-menu {
             padding: 10px;
             font-weight: 500;
 
-            icon {
-                min-width: 3rem;
-                min-height: 3rem;
+            .folder-button-icon, .app-button-icon {
+                
                 font-size: 3rem;
                 transition: all 150ms ease-in-out;
+            }
+            .app-button-icon {
+                min-width: 3rem;
+                min-height: 3rem;
+            }
+            .folder-button-icon {
+                min-width: 3rem;
+                min-height: 4rem;
+            }
+            .home-icon {
+                margin-left: -1.25rem;
+            }
+            .downloads-icon {
+                margin-left: -1.25rem;
+            }
+            .projects-icon {
+                margin-left: -1.25rem;
             }
             &:hover {
                 background-color: $base02;
             }
             &:active {
                 background-color: $base03;
-                icon {
+                .folder-button-icon, .app-button-icon {
                     font-size: 2rem;
+                }
+
+                .home-icon {
+                    margin-left: -0.775rem;
+                }
+                .downloads-icon {
+                    margin-left: -0.775rem;
+                }
+                .projects-icon {
+                    margin-left: -0.775rem;
                 }
             }
         }
@@ -108,21 +164,6 @@ window.start-menu {
         box.app-grid {
             min-height: calc(($app-icon-height + 40px) * 2);
         }
-        button.show-all-apps {
-            all: unset;
-            background-color: $base01;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            transition: all 150ms ease-in-out;
-            color: $base05;
-            &:hover {
-                background-color: $base02;
-            }
-            &:active {
-                background-color: $base03;
-            }
-        }
-        
         box.Applauncher {
             border-radius: 11px;
             entry {

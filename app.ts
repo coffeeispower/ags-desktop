@@ -2,6 +2,7 @@ import { App, type Gdk, type Gtk } from "astal/gtk3"
 import style from "./style.scss"
 import { Bar } from "./widgets/bar/Bar"
 import { colorScheme } from "./colors"
+import "./utils/neomorphism-generator"
 App.start({
     icons: `${SRC}/icons`,
     css: `

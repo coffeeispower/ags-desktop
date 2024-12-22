@@ -4,10 +4,10 @@ import GLib from 'gi://GLib?version=2.0';
 import { execAsync } from 'astal/process';
 import { closeStartMenu } from './StartMenu';
 
-function FolderIcon(props: { icon: string; name: string; folderPath: string; color: string }) {
+function FolderIcon(props: { icon: string; name: string; folderPath: string; color: string; iconClassName: string }) {
     const folderPath = props.folderPath.replaceAll("~/", `${GLib.getenv("HOME")}/`)
 	return (
-		<button valign={Gtk.Align.START} className="folder-icon" css={`color: ${props.color};`} onClicked={() => {
+		<button valign={Gtk.Align.START} className="folder-icon" css={`color: ${props.color};`}  onClicked={() => {
             execAsync(`nautilus ${folderPath}`);
             closeStartMenu();
         }}>
@@ -19,9 +19,11 @@ function FolderIcon(props: { icon: string; name: string; folderPath: string; col
 				halign={Gtk.Align.CENTER}
 				valign={Gtk.Align.CENTER}
 			>
-				<icon icon={props.icon} />
+				<label halign={Gtk.Align.CENTER} label={props.icon} className={`folder-button-icon ${props.iconClassName}`}/>
+				
 				<label
 					halign={Gtk.Align.CENTER}
+					valign={Gtk.Align.END}
 					justify={Gtk.Justification.CENTER}
 					hasFocus={false}
 					canFocus={false}
@@ -44,9 +46,9 @@ export function Folders() {
                 valign={Gtk.Align.START}
                 homogeneous
             >
-                <FolderIcon folderPath='~/' icon='house' name='/home' color="@base08"/>
-                <FolderIcon folderPath='~/Downloads' icon='downloads' name='Downloads' color="@base0D"/>
-                <FolderIcon folderPath='~/Projects' icon='projects' name='Projetos' color="@base0B"/>
+                <FolderIcon folderPath='~/' icon='' name='/home' color="@base08" iconClassName='home-icon'/>
+                <FolderIcon folderPath='~/Downloads' icon='' name='Downloads' iconClassName='downloads-icon' color="@base0D"/>
+                <FolderIcon folderPath='~/Projects' icon='' name='Projetos' iconClassName='projects-icon' color="@base0B"/>
             </FlowBox>
 		</box>
 	);

@@ -1,4 +1,5 @@
 import AstalIO from 'gi://AstalIO?version=0.1';
+import { getBestContrastColor } from './utils/contrast-checker';
 export type ColorScheme = {
 	base00: string;
 	base01: string;
@@ -51,3 +52,5 @@ const fallback = {
 colorScheme = tryLoadFile(`${SRC}/colors.json`);
 if(!colorScheme) colorScheme = tryLoadFile('/etc/stylix/generated.json')
 if(!colorScheme) colorScheme = fallback
+
+export const isLightTheme = getBestContrastColor(colorScheme.base00) === "black";

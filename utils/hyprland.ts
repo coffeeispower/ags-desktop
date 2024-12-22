@@ -26,3 +26,12 @@ for (const event of ["workspace-added", "workspace-removed", "client-added", "cl
         workspaces.set(hyprland.workspaces)
     })
 }
+
+export const focusedClient = Variable(hyprland.focusedClient);
+export const focusedClientTitle = Variable(hyprland.focusedClient?.title);
+hyprland.connect("event", (hyprland, event) => {
+    if(["activewindowv2", "windowtitlev2"].includes(event)){
+        focusedClient.set(hyprland.focusedClient);
+        focusedClientTitle.set(hyprland.focusedClient.title)
+    }
+})

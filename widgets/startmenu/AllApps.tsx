@@ -16,7 +16,7 @@ function AppButton({ app }: { app: AstalApps.Application }) {
 			}}
 		>
 			<box spacing={16}>
-				<icon icon={app.iconName} />
+				<icon className="app-button-icon" icon={app.iconName} />
 				<box valign={Gtk.Align.CENTER} vertical>
 					<label className="name" truncate xalign={0} label={app.name} />
 					{app.description && (
