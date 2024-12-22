@@ -1,62 +1,41 @@
-import { App, Astal, Gdk, Gtk, type Widget } from 'astal/gtk3';
+import { App, Astal, Gdk, Gtk } from 'astal/gtk3';
 import { RecentApplications } from './RecentApps';
 import { Folders } from './Folders';
 import Applauncher from './AllApps';
 import type { Entry } from 'astal/gtk3/widget';
-import Variable from 'astal/variable';
-import {
-	generateNeomorphismStyleCode,
-	LightSource,
-	NeomorphismShape,
-} from '../../utils/neomorphism-generator';
-import { colorScheme } from '../../colors';
-
+import type Variable from 'astal/variable';
 let stack: Gtk.Stack | null;
 function getStartMenu() {
 	return App.get_window('start-menu') as Astal.Window | null;
 }
-export function toggleStartMenu(gdkmonitor: Gdk.Monitor) {
+export function toggleStartMenu() {
 	if (getStartMenu()?.is_visible()) {
 		closeStartMenu();
 	} else {
-		showStartMenu(gdkmonitor);
+		showStartMenu();
 	}
 }
 export function closeStartMenu() {
 	stack?.set_visible_child_name('empty');
 	setTimeout(() => App.get_window('start-menu')?.hide(), 300)
 }
-export function showStartMenu(gdkmonitor: Gdk.Monitor) {
-	let startMenuWidget = getStartMenu();
-	// Create window if necessary
-	if (startMenuWidget == null) {
-		StartMenu(gdkmonitor);
-		startMenuWidget = getStartMenu();
-	}
-	// Otherwise set the window's monitor if it's using the wrong monitor
-	else if (startMenuWidget.gdkmonitor !== gdkmonitor) {
-		startMenuWidget.set_gdkmonitor(gdkmonitor);
-	}
-	startMenuWidget.show();
-	stack?.set_visible_child_name('start-menu')
+export function showStartMenu() {
+	getStartMenu().show();
 }
-export function StartMenu(gdkmonitor: Gdk.Monitor) {
+export function StartMenu() {
 	let searchBox: Entry;
 	let searchText: Variable<string>;
-	const revealChild = Variable<boolean>(false);
 	return (
 		<window
 			className="start-menu"
 			name="start-menu"
-			gdkmonitor={gdkmonitor}
 			anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.LEFT}
 			application={App}
 			keymode={Astal.Keymode.EXCLUSIVE}
 			onShow={() => {
-				revealChild.set(true);
+				stack?.set_visible_child_name('start-menu')
 			}}
 			onHide={() => {
-				revealChild.set(false);
 			}}
 			onKeyPressEvent={(_, event) => {
 				if (event.get_keyval()[1] === Gdk.KEY_Escape) {

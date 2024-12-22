@@ -3,6 +3,7 @@ import style from "./style.scss"
 import { Bar } from "./widgets/bar/Bar"
 import { colorScheme } from "./colors"
 import "./utils/neomorphism-generator"
+import { StartMenu } from "./widgets/startmenu/StartMenu"
 App.start({
     icons: `${SRC}/icons`,
     css: `
@@ -25,6 +26,7 @@ App.start({
         ${style}
     `,
     main() {
+        StartMenu();
         // This creates all the widgets that need to appear in all desktops
         function createGlobalWidgets(monitor: Gdk.Monitor) {
             return [Bar(monitor)]
