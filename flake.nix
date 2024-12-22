@@ -29,6 +29,7 @@
         extraPackages = with ags.packages.${system}; [
           hyprland
           battery
+          apps
         ];
       };
     };
