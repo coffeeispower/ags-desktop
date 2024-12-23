@@ -2,6 +2,7 @@ import { bind } from 'astal/binding';
 import { App, Astal, type Gdk, Gtk } from 'astal/gtk3';
 import Variable from 'astal/variable';
 import { colorScheme } from '../../colors';
+import { formatDate, formatTime, getWeekday } from '../../utils/dates';
 import {
 	filterNonEmptyWorkspaces,
 	focusedClientTitle,
@@ -9,7 +10,6 @@ import {
 	workspaces,
 } from '../../utils/hyprland';
 import { toggleStartMenu } from '../startmenu/StartMenu';
-import { formatDate, formatTime, getWeekday } from '../../utils/dates';
 
 export function OpenWorkspaceOverviewButton() {
 	return (
@@ -36,12 +36,11 @@ export function StartMenuButton() {
 	);
 }
 export function Bar(gdkmonitor: Gdk.Monitor) {
-
 	return (
 		<window
 			gdkmonitor={gdkmonitor}
-			name={"bar"}
-			namespace={"bar"}
+			name={'bar'}
+			namespace={'bar'}
 			exclusivity={Astal.Exclusivity.EXCLUSIVE}
 			anchor={
 				Astal.WindowAnchor.TOP |
@@ -56,16 +55,16 @@ export function Bar(gdkmonitor: Gdk.Monitor) {
 					<StartMenuButton gdkmonitor={gdkmonitor} />
 					<OpenWorkspaceOverviewButton />
 					{focusedClientTitle(title =>
-					title ? (
-						<box className="window-title" spacing={16}>
-							{title}
-						</box>
-					) : (
-						<box />
-					),
-				)}
+						title ? (
+							<box className="window-title" spacing={16}>
+								{title}
+							</box>
+						) : (
+							<box />
+						),
+					)}
 				</box>
-				<box/>
+				<box />
 
 				<box
 					className="clock"
@@ -74,8 +73,17 @@ export function Bar(gdkmonitor: Gdk.Monitor) {
 					marginEnd={20}
 					vertical
 				>
-					<label halign={Gtk.Align.END} label={Variable("").poll(60000, () => formatTime())()}/>
-					<label halign={Gtk.Align.END} label={Variable("").poll(60000, () => `${getWeekday("long")}, ${formatDate()}`)()}/>
+					<label
+						halign={Gtk.Align.END}
+						label={Variable('').poll(60000, () => formatTime())()}
+					/>
+					<label
+						halign={Gtk.Align.END}
+						label={Variable('').poll(
+							60000,
+							() => `${getWeekday('long')}, ${formatDate()}`,
+						)()}
+					/>
 				</box>
 			</centerbox>
 		</window>

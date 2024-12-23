@@ -29,7 +29,7 @@ export function StartMenu() {
 		<window
 			className="start-menu"
 			name="start-menu"
-			namespace={"start-menu"}
+			namespace={'start-menu'}
 			anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.LEFT}
 			application={App}
 			keymode={Astal.Keymode.EXCLUSIVE}
@@ -37,8 +37,8 @@ export function StartMenu() {
 				stack?.set_visible_child_name('start-menu');
 			}}
 			onHide={w => {
-				searchBox.set_text("");
-				searchText.set("");
+				searchBox.set_text('');
+				searchText.set('');
 				if (stack.get_visible_child_name() !== 'empty') {
 					w.show();
 					closeStartMenu();
@@ -60,7 +60,7 @@ export function StartMenu() {
 					if (!charCode || charCode < 32 || charCode > 126) return;
 					const character = String.fromCodePoint(charCode);
 					const newText = searchText.get() + character;
-					console.log(newText)
+					console.log(newText);
 					searchText.set(newText);
 					searchBox.set_text(newText);
 					searchBox.grab_focus();
@@ -86,8 +86,8 @@ export function StartMenu() {
 						<RecentApplications
 							showAllApps={() => {
 								stack.set_visible_child_name('all-apps');
-								searchText.set("");
-								searchBox.set_text("");
+								searchText.set('');
+								searchBox.set_text('');
 								searchBox.grab_focus_without_selecting();
 							}}
 						/>

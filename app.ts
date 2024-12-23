@@ -3,7 +3,7 @@ import { colorScheme } from './colors';
 import style from './style.scss';
 import { Bar } from './widgets/bar/Bar';
 import './utils/neomorphism-generator';
-import { showStartMenu, StartMenu, toggleStartMenu } from './widgets/startmenu/StartMenu';
+import { StartMenu, toggleStartMenu } from './widgets/startmenu/StartMenu';
 App.start({
 	icons: `${SRC}/icons`,
 	css: `
@@ -26,9 +26,9 @@ App.start({
         ${style}
     `,
 	requestHandler(request, res) {
-		if(request === "start-menu") {
+		if (request === 'start-menu') {
 			toggleStartMenu();
-			res("ok");
+			res('ok');
 		}
 	},
 	main() {
