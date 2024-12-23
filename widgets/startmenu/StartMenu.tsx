@@ -29,6 +29,7 @@ export function StartMenu() {
 		<window
 			className="start-menu"
 			name="start-menu"
+			namespace={"start-menu"}
 			anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.LEFT}
 			application={App}
 			keymode={Astal.Keymode.EXCLUSIVE}

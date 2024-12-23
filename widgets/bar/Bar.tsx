@@ -1,8 +1,7 @@
 import { bind } from 'astal/binding';
 import { App, Astal, type Gdk, Gtk } from 'astal/gtk3';
-import { exec } from 'astal/process';
 import Variable from 'astal/variable';
-import { colorScheme, isLightTheme } from '../../colors';
+import { colorScheme } from '../../colors';
 import {
 	filterNonEmptyWorkspaces,
 	focusedClientTitle,
@@ -11,7 +10,6 @@ import {
 } from '../../utils/hyprland';
 import { toggleStartMenu } from '../startmenu/StartMenu';
 import { formatDate, formatTime, getWeekday } from '../../utils/dates';
-import { generateNeomorphismStyleCode, LightSource, NeomorphismShape } from '../../utils/neomorphism-generator';
 
 export function OpenWorkspaceOverviewButton() {
 	return (
@@ -42,6 +40,8 @@ export function Bar(gdkmonitor: Gdk.Monitor) {
 	return (
 		<window
 			gdkmonitor={gdkmonitor}
+			name={"bar"}
+			namespace={"bar"}
 			exclusivity={Astal.Exclusivity.EXCLUSIVE}
 			anchor={
 				Astal.WindowAnchor.TOP |
