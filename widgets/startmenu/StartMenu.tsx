@@ -4,23 +4,17 @@ import type Variable from 'astal/variable';
 import Applauncher from './AllApps';
 import { Folders } from './Folders';
 import { RecentApplications } from './RecentApps';
+import { DASHBOARD_IS_OPEN } from '../dashboard/DashboardScreen';
 let stack: Gtk.Stack | null;
-function getStartMenu() {
-	return App.get_window('start-menu') as Astal.Window | null;
-}
 export function toggleStartMenu() {
-	if (getStartMenu()?.is_visible()) {
-		closeStartMenu();
-	} else {
-		showStartMenu();
-	}
+	App.toggle_window("start-menu");
 }
 export function closeStartMenu() {
-	stack?.set_visible_child_name('empty');
-	setTimeout(() => App.get_window('start-menu')?.hide(), 300);
+	App.get_window('start-menu')?.hide()
 }
 export function showStartMenu() {
-	getStartMenu().show();
+	App.get_window('start-menu')?.show()
+	App.get_window('dashboard')?.hide();
 }
 export function StartMenu() {
 	let searchBox: Entry;
@@ -29,21 +23,18 @@ export function StartMenu() {
 		<window
 			className="start-menu"
 			name="start-menu"
+			visible={false}
 			namespace={'start-menu'}
 			anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.LEFT}
 			application={App}
 			keymode={Astal.Keymode.EXCLUSIVE}
-			onShow={() => {
-				stack?.set_visible_child_name('start-menu');
-			}}
-			onHide={w => {
+			onHide={() => {
 				searchBox.set_text('');
 				searchText.set('');
-				if (stack.get_visible_child_name() !== 'empty') {
-					w.show();
-					closeStartMenu();
-					return false;
-				}
+			}}
+			onShow={() => {
+				stack?.set_visible_child_name("start-menu");
+				DASHBOARD_IS_OPEN.set(false);
 			}}
 			onKeyPressEvent={(_, event) => {
 				if (event.get_keyval()[1] === Gdk.KEY_Escape) {
@@ -70,8 +61,8 @@ export function StartMenu() {
 		>
 			<box className="start-menu-container">
 				<stack
-					transitionType={Gtk.StackTransitionType.SLIDE_UP_DOWN}
-					visibleChildName={'empty'}
+					transitionType={Gtk.StackTransitionType.SLIDE_LEFT_RIGHT}
+					visibleChildName={'start-menu'}
 					setup={s => {
 						stack = s;
 					}}
@@ -116,7 +107,6 @@ export function StartMenu() {
 							}}
 						/>
 					</box>
-					<box name="empty" />
 				</stack>
 			</box>
 		</window>
