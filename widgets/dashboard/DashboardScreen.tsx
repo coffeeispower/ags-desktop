@@ -1,12 +1,12 @@
 import { App, Astal, Gtk } from 'astal/gtk3';
 import Variable from 'astal/variable';
-import { closeStartMenu } from '../startmenu/StartMenu';
 import { FlowBox, FlowBoxChild } from '../flowbox';
+import { closeStartMenu } from '../startmenu/StartMenu';
 import { ResourceMonitorWidget } from './ResourceMonitorWidget';
 export const DASHBOARD_IS_OPEN = Variable(false);
-DASHBOARD_IS_OPEN.subscribe((wasOpened) => {
-	App.get_window("dashboard")?.set_visible(wasOpened);
-})
+DASHBOARD_IS_OPEN.subscribe(wasOpened => {
+	App.get_window('dashboard')?.set_visible(wasOpened);
+});
 export function DashboardScreen() {
 	return (
 		<window
@@ -26,17 +26,16 @@ export function DashboardScreen() {
 				closeStartMenu();
 			}}
 			onHide={() => {
-				DASHBOARD_IS_OPEN.set(false)
+				DASHBOARD_IS_OPEN.set(false);
 			}}
 		>
-            <box className={"dashboard-container"}>
+			<box className={'dashboard-container'}>
 				<FlowBox selectionMode={Gtk.SelectionMode.NONE}>
 					<FlowBoxChild canFocus={false}>
 						<ResourceMonitorWidget />
 					</FlowBoxChild>
-					
 				</FlowBox>
 			</box>
-        </window>
+		</window>
 	);
 }
