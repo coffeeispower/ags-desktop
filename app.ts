@@ -3,8 +3,8 @@ import { colorScheme } from './colors';
 import style from './style.scss';
 import { Bar } from './widgets/bar/Bar';
 import './utils/neomorphism-generator';
-import { StartMenu, toggleStartMenu } from './widgets/startmenu/StartMenu';
 import { DashboardScreen } from './widgets/dashboard/DashboardScreen';
+import { StartMenu } from './widgets/startmenu/StartMenu';
 App.start({
 	icons: `${SRC}/icons`,
 	css: `

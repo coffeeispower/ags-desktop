@@ -9,8 +9,8 @@ import {
 	toggleWorkspaceOverview,
 	workspaces,
 } from '../../utils/hyprland';
-import { toggleStartMenu } from '../startmenu/StartMenu';
 import { DASHBOARD_IS_OPEN } from '../dashboard/DashboardScreen';
+import { toggleStartMenu } from '../startmenu/StartMenu';
 
 export function OpenWorkspaceOverviewButton() {
 	return (
@@ -32,7 +32,7 @@ export function StartMenuButton() {
 			focusOnClick={false}
 			onClicked={() => toggleStartMenu()}
 		>
-			<label label="" halign={Gtk.Align.CENTER} valign={Gtk.Align.CENTER}/>
+			<label label="" halign={Gtk.Align.CENTER} valign={Gtk.Align.CENTER} />
 		</button>
 	);
 }
@@ -54,8 +54,15 @@ export function Bar(gdkmonitor: Gdk.Monitor) {
 			<centerbox css="padding-left: 20px; padding-bottom: 10px; padding-top: 10px; min-height: 3.25rem">
 				{DASHBOARD_IS_OPEN(dashboardIsOpen =>
 					dashboardIsOpen ? (
-						<box css="color: @base05; margin-left: 20px;" valign={Gtk.Align.CENTER}>
-							<label css="font-weight: 600; font-size: 1.5rem;" label="Dashboard do Sistema" valign={Gtk.Align.END} />
+						<box
+							css="color: @base05; margin-left: 20px;"
+							valign={Gtk.Align.CENTER}
+						>
+							<label
+								css="font-weight: 600; font-size: 1.5rem;"
+								label="Dashboard do Sistema"
+								valign={Gtk.Align.END}
+							/>
 						</box>
 					) : (
 						<box className="right-side" halign={Gtk.Align.START}>
@@ -66,7 +73,9 @@ export function Bar(gdkmonitor: Gdk.Monitor) {
 									<box className="window-title" spacing={16}>
 										{title}
 									</box>
-								) : "",
+								) : (
+									''
+								),
 							)}
 						</box>
 					),
@@ -95,7 +104,11 @@ export function Bar(gdkmonitor: Gdk.Monitor) {
 							DASHBOARD_IS_OPEN.set(!DASHBOARD_IS_OPEN.get());
 						}}
 					>
-						<label label="󰕮" halign={Gtk.Align.CENTER} valign={Gtk.Align.CENTER}/>
+						<label
+							label="󰕮"
+							halign={Gtk.Align.CENTER}
+							valign={Gtk.Align.CENTER}
+						/>
 					</button>
 				</box>
 			</centerbox>

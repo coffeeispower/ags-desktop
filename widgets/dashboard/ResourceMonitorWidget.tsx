@@ -1,11 +1,10 @@
-import { astalify, Gtk, Widget } from 'astal/gtk3';
-import { WidgetContainer } from './WidgetContainer';
 import GTop from 'gi://GTop?version=2.0';
+import { Gtk } from 'astal/gtk3';
+import type { LevelBar } from 'astal/gtk3/widget';
 import Variable from 'astal/variable';
-import { type LevelBar } from 'astal/gtk3/widget';
-import { DiskInfo, getDisks } from './disks';
+import { WidgetContainer } from './WidgetContainer';
+import { getDisks } from './disks';
 import { formatSize } from './formatSize';
-const GtkArrow = astalify(Gtk.Arrow);
 const memory = Variable(new GTop.glibtop_mem()).poll(100, () => {
 	const memory = new GTop.glibtop_mem();
 	GTop.glibtop_get_mem(memory);
@@ -94,39 +93,59 @@ export function ResourceMonitorWidget() {
 						<label xalign={0} className="label" label="Discos" />
 					</box>
 					<box vertical spacing={16} className="disks-list">
-						{disks(disks => disks.map(disk => 
-                            <box spacing={16}>
-                                <label className="device-name" label={disk.device}/>
-                                {disk.mountInfo ? <>
-                                    {
-                                        disk.mountInfo.type === "swapPartition" ?
-                                        <box className="arrow"/>:
-                                        <label className="arrow" label="--->"/>
-                                    }
-									{
-										disk.mountInfo.type === "dataPartition"
-										? <label xalign={0} className="mountpoint" label={disk.mountInfo.mountedOn}/>
-										: <label xalign={0} className="mountpoint mountpoint-swap" label={"SWAP"}/>
-									}
-                                    <levelbar
-										valign={Gtk.Align.CENTER}
-										setup={setupLevelBarOffsets}
-										value={disk.mountInfo.used / disk.mountInfo.diskSize}
-									/>
-									<label
-										xalign={0}
-										className="indicator"
-										label={`${disk.mountInfo.usedDisplay} / ${disk.mountInfo.diskSizeDisplay}`}
-									/>
-                                    
-									<label
-										xalign={0}
-										label={disk.mountInfo.type === "swapPartition" ? "" : disk.mountInfo.filesystem.toUpperCase()}
-									/>
-                                    
-                                </>: <label css="color: @base08; font-weight: 600;" label="OFFLINE"/>}
-                            </box>
-                        ))}
+						{disks(disks =>
+							disks.map(disk => (
+								<box spacing={16}>
+									<label className="device-name" label={disk.device} />
+									{disk.mountInfo ? (
+										<>
+											{disk.mountInfo.type === 'swapPartition' ? (
+												<box className="arrow" />
+											) : (
+												<label className="arrow" label="--->" />
+											)}
+											{disk.mountInfo.type === 'dataPartition' ? (
+												<label
+													xalign={0}
+													className="mountpoint"
+													label={disk.mountInfo.mountedOn}
+												/>
+											) : (
+												<label
+													xalign={0}
+													className="mountpoint mountpoint-swap"
+													label={'SWAP'}
+												/>
+											)}
+											<levelbar
+												valign={Gtk.Align.CENTER}
+												setup={setupLevelBarOffsets}
+												value={disk.mountInfo.used / disk.mountInfo.diskSize}
+											/>
+											<label
+												xalign={0}
+												className="indicator"
+												label={`${disk.mountInfo.usedDisplay} / ${disk.mountInfo.diskSizeDisplay}`}
+											/>
+
+											<label
+												xalign={0}
+												label={
+													disk.mountInfo.type === 'swapPartition'
+														? ''
+														: disk.mountInfo.filesystem.toUpperCase()
+												}
+											/>
+										</>
+									) : (
+										<label
+											css="color: @base08; font-weight: 600;"
+											label="OFFLINE"
+										/>
+									)}
+								</box>
+							)),
+						)}
 					</box>
 				</box>
 			</box>

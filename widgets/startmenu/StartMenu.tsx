@@ -1,19 +1,19 @@
 import { App, Astal, Gdk, Gtk } from 'astal/gtk3';
 import type { Entry } from 'astal/gtk3/widget';
 import type Variable from 'astal/variable';
+import { DASHBOARD_IS_OPEN } from '../dashboard/DashboardScreen';
 import Applauncher from './AllApps';
 import { Folders } from './Folders';
 import { RecentApplications } from './RecentApps';
-import { DASHBOARD_IS_OPEN } from '../dashboard/DashboardScreen';
 let stack: Gtk.Stack | null;
 export function toggleStartMenu() {
-	App.toggle_window("start-menu");
+	App.toggle_window('start-menu');
 }
 export function closeStartMenu() {
-	App.get_window('start-menu')?.hide()
+	App.get_window('start-menu')?.hide();
 }
 export function showStartMenu() {
-	App.get_window('start-menu')?.show()
+	App.get_window('start-menu')?.show();
 	App.get_window('dashboard')?.hide();
 }
 export function StartMenu() {
@@ -33,7 +33,7 @@ export function StartMenu() {
 				searchText.set('');
 			}}
 			onShow={() => {
-				stack?.set_visible_child_name("start-menu");
+				stack?.set_visible_child_name('start-menu');
 				DASHBOARD_IS_OPEN.set(false);
 			}}
 			onKeyPressEvent={(_, event) => {
