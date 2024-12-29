@@ -49,7 +49,7 @@ export function getRecentApps() {
 		.get_list()
 		.filter(app => app.frequency)
 		.sort((app1, app2) => Math.sign(app2.frequency - app1.frequency))
-		.slice(0, 18);
+		.slice(0, 10);
 }
 const recentApps = Variable(getRecentApps());
 export function updateRecentApps() {

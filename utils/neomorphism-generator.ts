@@ -168,6 +168,5 @@ export function generateNeomorphismStyleCode(
 		border-radius: ${styles.borderRadius};
 		box-shadow: ${styles.boxShadow};
 	`;
-	console.log(code);
 	return code;
 }

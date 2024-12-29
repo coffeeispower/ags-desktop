@@ -17,6 +17,12 @@
   }: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
+    extraAgsPackages = with ags.packages.${system}; [
+      hyprland
+      battery
+      apps
+      pkgs.libgtop
+    ];
   in {
     packages.${system} = {
       default = ags.lib.bundle {
@@ -26,21 +32,19 @@
         entry = "app.ts";
 
         # additional libraries and executables to add to gjs' runtime
-        extraPackages = with ags.packages.${system}; [
-          hyprland
-          battery
-          apps
-        ];
+        extraPackages = extraAgsPackages;
       };
     };
 
     devShells.${system} = {
       default = pkgs.mkShell {
-        buildInputs = [
+        nativeBuildInputs = [
           pkgs.biome
           pkgs.nodePackages.nodemon
           pkgs.just
-          ags.packages.${system}.agsFull
+          (ags.packages.${system}.default.override {
+            extraPackages = extraAgsPackages;
+          })
         ];
       };
     };
