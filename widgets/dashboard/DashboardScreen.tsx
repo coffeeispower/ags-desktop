@@ -1,6 +1,8 @@
-import { App, Astal } from 'astal/gtk3';
+import { App, Astal, Gtk } from 'astal/gtk3';
 import Variable from 'astal/variable';
 import { closeStartMenu } from '../startmenu/StartMenu';
+import { FlowBox, FlowBoxChild } from '../flowbox';
+import { ResourceMonitorWidget } from './ResourceMonitorWidget';
 export const DASHBOARD_IS_OPEN = Variable(false);
 DASHBOARD_IS_OPEN.subscribe((wasOpened) => {
 	App.get_window("dashboard")?.set_visible(wasOpened);
@@ -19,7 +21,6 @@ export function DashboardScreen() {
 			}
 			keymode={Astal.Keymode.EXCLUSIVE}
 			application={App}
-			css={"font-size: 100px"}
 			onShow={() => {
 				DASHBOARD_IS_OPEN.set(true);
 				closeStartMenu();
@@ -28,7 +29,14 @@ export function DashboardScreen() {
 				DASHBOARD_IS_OPEN.set(false)
 			}}
 		>
-            DASHBOARD (TODO)
+            <box className={"dashboard-container"}>
+				<FlowBox selectionMode={Gtk.SelectionMode.NONE}>
+					<FlowBoxChild canFocus={false}>
+						<ResourceMonitorWidget />
+					</FlowBoxChild>
+					
+				</FlowBox>
+			</box>
         </window>
 	);
 }

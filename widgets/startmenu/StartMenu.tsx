@@ -51,7 +51,6 @@ export function StartMenu() {
 					if (!charCode || charCode < 32 || charCode > 126) return;
 					const character = String.fromCodePoint(charCode);
 					const newText = searchText.get() + character;
-					console.log(newText);
 					searchText.set(newText);
 					searchBox.set_text(newText);
 					searchBox.grab_focus();
