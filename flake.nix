@@ -22,6 +22,7 @@
       battery
       apps
       pkgs.libgtop
+      pkgs.libsoup_3
     ];
   in {
     packages.${system} = {

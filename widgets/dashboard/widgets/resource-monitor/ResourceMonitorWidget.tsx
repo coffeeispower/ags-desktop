@@ -2,9 +2,9 @@ import GTop from 'gi://GTop?version=2.0';
 import { Gtk } from 'astal/gtk3';
 import type { LevelBar } from 'astal/gtk3/widget';
 import Variable from 'astal/variable';
-import { WidgetContainer } from './WidgetContainer';
-import { getDisks } from './disks';
-import { formatSize } from './formatSize';
+import { WidgetContainer } from '../../WidgetContainer';
+import { getDisks } from '../../../../utils/disks';
+import { formatSize } from '../../../../utils/formatSize';
 const memory = Variable(new GTop.glibtop_mem()).poll(100, () => {
 	const memory = new GTop.glibtop_mem();
 	GTop.glibtop_get_mem(memory);

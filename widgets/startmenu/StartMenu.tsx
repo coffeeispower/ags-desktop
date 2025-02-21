@@ -2,7 +2,7 @@ import { App, Astal, Gdk, Gtk } from 'astal/gtk3';
 import type { Entry } from 'astal/gtk3/widget';
 import type Variable from 'astal/variable';
 import { DASHBOARD_IS_OPEN } from '../dashboard/DashboardScreen';
-import Applauncher from './AllApps';
+import AppLauncher from './AllApps';
 import { Folders } from './Folders';
 import { RecentApplications } from './RecentApps';
 let stack: Gtk.Stack | null;
@@ -99,7 +99,7 @@ export function StartMenu() {
 						>
 							← Voltar
 						</button>
-						<Applauncher
+						<AppLauncher
 							setup={(e, t) => {
 								searchBox = e;
 								searchText = t;

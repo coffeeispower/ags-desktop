@@ -33,7 +33,7 @@ function AppButton({ app }: { app: AstalApps.Application }) {
 	);
 }
 
-export default function Applauncher(props: {
+export default function AppLauncher(props: {
 	setup?: (e: Entry, text: Variable<string>) => void;
 }) {
 	const { CENTER } = Gtk.Align;

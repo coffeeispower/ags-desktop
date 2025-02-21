@@ -11,6 +11,7 @@ import {
 } from '../../utils/hyprland';
 import { DASHBOARD_IS_OPEN } from '../dashboard/DashboardScreen';
 import { toggleStartMenu } from '../startmenu/StartMenu';
+import BatteryIndicator from "../components/BatteryIndicator";
 
 export function OpenWorkspaceOverviewButton() {
 	return (
@@ -84,6 +85,7 @@ export function Bar(gdkmonitor: Gdk.Monitor) {
 				<box />
 
 				<box className="clock" halign={Gtk.Align.END} valign={Gtk.Align.FILL}>
+					<BatteryIndicator />
 					<box vertical valign={Gtk.Align.CENTER} marginEnd={10}>
 						<label
 							halign={Gtk.Align.END}
