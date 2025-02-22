@@ -61,7 +61,7 @@ export function Bar(gdkmonitor: Gdk.Monitor) {
 						>
 							<label
 								css="font-weight: 600; font-size: 1.5rem;"
-								label="Dashboard do Sistema"
+								label="システムダッシュボード"
 								valign={Gtk.Align.END}
 							/>
 						</box>
@@ -105,6 +105,7 @@ export function Bar(gdkmonitor: Gdk.Monitor) {
 						onClicked={() => {
 							DASHBOARD_IS_OPEN.set(!DASHBOARD_IS_OPEN.get());
 						}}
+						tooltipText={'システムダッシュボードを開く'}
 					>
 						<label
 							label="󰕮"

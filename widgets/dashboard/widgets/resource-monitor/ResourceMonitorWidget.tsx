@@ -48,7 +48,7 @@ export function ResourceMonitorWidget() {
 				/>
 				<label
 					className={'widget-title'}
-					label="Monitor de Recursos"
+					label="リソースモニター"
 					halign={Gtk.Align.START}
 					valign={Gtk.Align.BASELINE}
 				/>
@@ -71,7 +71,7 @@ export function ResourceMonitorWidget() {
 				</box>
 				<box className="ram-container" spacing={16}>
 					<label className="icon" label="" />
-					<label xalign={0} className="label" label="Memória" />
+					<label xalign={0} className="label" label="メモリ" />
 					<levelbar
 						valign={Gtk.Align.CENTER}
 						setup={setupLevelBarOffsets}
@@ -90,7 +90,7 @@ export function ResourceMonitorWidget() {
 				<box className="disks-container" vertical>
 					<box className="disks-header" spacing={16}>
 						<label className="icon" label="" />
-						<label xalign={0} className="label" label="Discos" />
+						<label xalign={0} className="label" label="ディスク" />
 					</box>
 					<box vertical spacing={16} className="disks-list">
 						{disks(disks =>

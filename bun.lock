@@ -1,0 +1,47 @@
+{
+  "lockfileVersion": 1,
+  "workspaces": {
+    "": {
+      "dependencies": {
+        "grest": "^1.2.0",
+      },
+    },
+  },
+  "packages": {
+    "@cgjs/assert": ["@cgjs/assert@0.0.2", "", {}, "sha512-G6nTc0DZZ0Wp14fxzj9oF+vQT1GHMtRUrIN/a6M8V8sJKqm7kdw+IQQDFE12abxC5vsWPMpB090MDYnaBDQg3w=="],
+
+    "@cgjs/buffer": ["@cgjs/buffer@0.1.1", "", { "dependencies": { "buffer": "^5.0.8" } }, "sha512-UJwhXsnytdRt2ygEZjHcEm6SZ/RsuUkPHVHZdaCT0Ey6CYF6sC2U1c9wR4uo4VnoQddfAeJF8CVE8VxK2+ELtQ=="],
+
+    "@cgjs/cluster": ["@cgjs/cluster@0.0.2", "", {}, "sha512-PzQsyK79v0Uq7H0tVbepeafp9IndpRZwhftkM3LBkDLRroISpuhmIgx56tBlPwrDr3XDkUlTEX7F0wh4Jfdwpw=="],
+
+    "@cgjs/console": ["@cgjs/console@0.1.3", "", {}, "sha512-0kbKaUIO9JwO35fiKb2zMPdHqvFzTFHVF2ZjhL92RxDZm9i5HS35TkydVoZ3dAMp0ACslTKB3V3WR2jHqde+wQ=="],
+
+    "@cgjs/events": ["@cgjs/events@0.1.1", "", {}, "sha512-P9AdVIPXgBbTUiU1vatWTu039BR3fU/p+u7aNZD+cuwzsmqaqLsj708utdNvil65XhHYcGAa6HSzXLkZlRtOVA=="],
+
+    "@cgjs/fs": ["@cgjs/fs@0.0.4", "", {}, "sha512-63KagxS9h24omUTNorMYCXj5ktu7Lug37LqAgC/4FMhqEGH2l32r0Yf/BsRheCRq1GYSBNWRDCim2kLD631YtA=="],
+
+    "@cgjs/gir": ["@cgjs/gir@0.0.1", "", {}, "sha512-ABHguFr8uYiAWIXGfBXimw3Xksr9bFxa2m65/bCccDXyptyy1+5Ndx3ZTyABHsElP5MkggZzHtqCKRqX8oTTYA=="],
+
+    "@cgjs/os": ["@cgjs/os@0.1.1", "", {}, "sha512-FF4NZoMSKP7gR1TOKGdv9Q1LbxmpP6UVmZMJBUhn33YEeG5aOiZnBljKF707lqd2+qc+VEtRYNkEBJK0Jc0a0Q=="],
+
+    "@cgjs/path": ["@cgjs/path@0.1.1", "", {}, "sha512-tsBblo9bYVVYUlleyUu6+MfnZYApI+4xA6KLslNn96+4LI345g7ubaoETz0WBiyrQ3rleYFWJgHD5jrGTiOvSg=="],
+
+    "@cgjs/process": ["@cgjs/process@0.0.4", "", {}, "sha512-pc6SJlTdz1at/DzhZ9zEbXUgDEmcZb+e0x+YdY3MjgmmPNDkd426nKPdY9EJQ92pUjTju4Utx8lA2fIMm4zAZQ=="],
+
+    "@cgjs/timers": ["@cgjs/timers@0.0.2", "", {}, "sha512-pU6ITZiqw094cUu0k1v7YRTkfYhyRDFxZKf87Xvh6riF6y20lPXMO6tmrYUr3HNWxw8E8s/87jOvvujPGI8FhA=="],
+
+    "@cgjs/util": ["@cgjs/util@0.1.1", "", {}, "sha512-0iZ2zui0k3K/j/7ohshfqHQ9YGJ5wuKz5K4xP8T6uwk9nLnWXjF5ot7AJmqaBz2Sq/JyMUeOtX2qIWEhY8pheg=="],
+
+    "@types/node": ["@types/node@10.17.60", "", {}, "sha512-F0KIgDJfy2nA3zMLmWGKxcH2ZVEtCZXHHdOQs2gSaQ27+lNeEfGxzkIw90aXswATX7AZ33tahPbzy6KAfUreVw=="],
+
+    "base64-js": ["base64-js@1.5.1", "", {}, "sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA=="],
+
+    "buffer": ["buffer@5.7.1", "", { "dependencies": { "base64-js": "^1.3.1", "ieee754": "^1.1.13" } }, "sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ=="],
+
+    "cgjs": ["cgjs@0.1.32", "", { "dependencies": { "@cgjs/assert": "^0.0.2", "@cgjs/buffer": "^0.1.1", "@cgjs/cluster": "^0.0.2", "@cgjs/console": "^0.1.3", "@cgjs/events": "^0.1.1", "@cgjs/fs": "^0.0.4", "@cgjs/gir": "^0.0.1", "@cgjs/os": "^0.1.1", "@cgjs/path": "^0.1.1", "@cgjs/process": "^0.0.4", "@cgjs/timers": "^0.0.2", "@cgjs/util": "^0.1.1" }, "bin": { "cgjs": "cg.js" } }, "sha512-d2TiE5fyRzTIk8/6uEP6hYMkjnBpJa1DkhCnlJubyEotH6DoXd8LJ/PiJBU9NSeDHhpRmSnQdku00qXQi6KmeQ=="],
+
+    "grest": ["grest@1.2.0", "", { "optionalDependencies": { "@types/node": "^10.12.5", "cgjs": "^0.1.32" } }, "sha512-ZW2K10i/PjxkeMkIvn+crJyhIGOberCaGRMHxcVTyomeCytWgLCMhrx/yTQ3tAMovHjJ0uPXKejNNMf6huHARg=="],
+
+    "ieee754": ["ieee754@1.2.1", "", {}, "sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA=="],
+  }
+}

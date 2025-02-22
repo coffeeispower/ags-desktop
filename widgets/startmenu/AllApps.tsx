@@ -55,7 +55,7 @@ export default function AppLauncher(props: {
 			halign={Gtk.Align.FILL}
 		>
 			<entry
-				placeholderText="Search"
+				placeholderText="検索"
 				text={text()}
 				onChanged={self => text.set(self.text)}
 				onActivate={onEnter}
@@ -75,7 +75,7 @@ export default function AppLauncher(props: {
 					visible={list.as(l => l.length === 0)}
 				>
 					<icon icon="system-search-symbolic" />
-					<label label="No match found" />
+					<label label="キーワードに合うアプリケーションが見つけられませんでした" />
 				</box>
 			</scrollable>
 		</box>

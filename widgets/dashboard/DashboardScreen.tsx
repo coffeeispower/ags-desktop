@@ -2,7 +2,8 @@ import { App, Astal, Gtk } from 'astal/gtk3';
 import Variable from 'astal/variable';
 import { FlowBox, FlowBoxChild } from '../flowbox';
 import { closeStartMenu } from '../startmenu/StartMenu';
-import { ResourceMonitorWidget } from './ResourceMonitorWidget';
+import { ResourceMonitorWidget } from './widgets/resource-monitor/ResourceMonitorWidget';
+import { DeeplWidget } from './widgets/deepl/DeeplWidget';
 export const DASHBOARD_IS_OPEN = Variable(false);
 DASHBOARD_IS_OPEN.subscribe(wasOpened => {
 	App.get_window('dashboard')?.set_visible(wasOpened);
@@ -33,6 +34,9 @@ export function DashboardScreen() {
 				<FlowBox selectionMode={Gtk.SelectionMode.NONE}>
 					<FlowBoxChild canFocus={false}>
 						<ResourceMonitorWidget />
+					</FlowBoxChild>
+					<FlowBoxChild canFocus={false}>
+						<DeeplWidget />
 					</FlowBoxChild>
 				</FlowBox>
 			</box>

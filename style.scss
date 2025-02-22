@@ -321,5 +321,38 @@ window#dashboard {
                 font-weight: 600;
             }
         }
+        .deepl-widget {
+            .widget-header {
+                padding-right: 0px;
+            }
+            textview, textview text {
+                padding: 1rem;
+                font-size: 1rem;
+                background-color: transparent;
+            }
+            combobox button {
+                border-radius: 0;
+                background-color: transparent;
+                &:hover {
+                    background-color: $base01;
+                }
+                border-bottom: 1px solid $base03;
+            }
+            & .input-side, & .output-side {
+                min-width: 20rem;
+                min-height: 20rem;
+            }
+            .input-side {
+                border-right: 1px solid $base03;
+            }
+            .swap-languages-button {
+                margin-left: 24rem;
+                margin-right: 1rem;
+                background-color: transparent;
+                &:hover {
+                    background-color: $base01;
+                }
+            }
+        }
     }
 }

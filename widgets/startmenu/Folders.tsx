@@ -57,7 +57,7 @@ export function Folders() {
 	return (
 		<box className="folders-container" vertical>
 			<label
-				label="Pastas"
+				label="フォルダー"
 				className="section-title"
 				halign={Gtk.Align.START}
 			/>
@@ -71,21 +71,21 @@ export function Folders() {
 				<FolderIcon
 					folderPath="~/"
 					icon=""
-					name="/home"
+					name="ホーム"
 					color="@base08"
 					iconClassName="home-icon"
 				/>
 				<FolderIcon
 					folderPath="~/Downloads"
 					icon=""
-					name="Downloads"
+					name="ダウンロード"
 					iconClassName="downloads-icon"
 					color="@base0D"
 				/>
 				<FolderIcon
 					folderPath="~/Projects"
 					icon=""
-					name="Projetos"
+					name="プロジェクト"
 					iconClassName="projects-icon"
 					color="@base0B"
 				/>

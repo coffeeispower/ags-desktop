@@ -62,7 +62,7 @@ export function RecentApplications(props: { showAllApps: () => void }) {
 				className={'section-title'}
 				halign={Gtk.Align.START}
 				valign={Gtk.Align.START}
-				label={'Aplicações'}
+				label={'アプリ'}
 			/>
 			<box className="app-grid">
 				<FlowBox
@@ -83,7 +83,7 @@ export function RecentApplications(props: { showAllApps: () => void }) {
 				halign={Gtk.Align.START}
 				onClicked={props.showAllApps}
 			>
-				Mostrar todas
+				すべてを表示
 			</button>
 		</box>
 	);

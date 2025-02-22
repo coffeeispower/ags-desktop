@@ -5,6 +5,8 @@ import { Bar } from './widgets/bar/Bar';
 import './utils/neomorphism-generator';
 import { DashboardScreen } from './widgets/dashboard/DashboardScreen';
 import { StartMenu } from './widgets/startmenu/StartMenu';
+import "./vendor/troll/src/globals.js";
+
 App.start({
 	icons: `${SRC}/icons`,
 	css: `

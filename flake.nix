@@ -23,6 +23,8 @@
       apps
       pkgs.libgtop
       pkgs.libsoup_3
+      pkgs.libgda
+      pkgs.glib-networking
     ];
   in {
     packages.${system} = {
