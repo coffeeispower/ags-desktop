@@ -20,9 +20,12 @@ export function OpenWorkspaceOverviewButton() {
 			focusOnClick={false}
 			onClicked={() => toggleWorkspaceOverview()}
 		>
-			{bind(workspaces).as(
-				workspaces => `\uebeb   ${filterNonEmptyWorkspaces(workspaces).length}`,
-			)}
+			<box spacing={16} >
+				<label css="font-size: 130%" label={"\uebeb"} />
+				<label label={bind(workspaces).as(
+					workspaces => `${filterNonEmptyWorkspaces(workspaces).length}`,
+				)}/>
+			</box>
 		</button>
 	);
 }

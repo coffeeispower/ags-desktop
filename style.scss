@@ -17,7 +17,7 @@ $base0E: #{"@base0E"};
 $base0F: #{"@base0F"};
 $bar-height: 50px;
 $start-menu-width: 3.5rem;
-$workspace-overview-button-width: 70px;
+$workspace-overview-button-width: 30px;
 
 $border-radius: 10px;
 
@@ -25,8 +25,7 @@ $border-radius: 10px;
     @return string.unquote("alpha(#{$c},#{$a})");
 }
 window {
-    all: unset;    
-
+    all: unset;
 }
 
 button {
@@ -53,7 +52,11 @@ entry {
 }
 .window-title, .clock {
     padding: 0px 1rem;
-    color: $base05
+    color: $base05;
+    font-weight: 600;
+}
+.clock {
+    font-size: smaller;
 }
 .right-side {
     button {
@@ -67,38 +70,38 @@ entry {
         &.start-menu {
             border-radius:  $border-radius;
             transition: all 50ms ease-in-out;
-            font-size: 125%;
+            font-size: 185%;
             min-width: $start-menu-width;
 
             color: $base07;
             &:hover {
-                font-size: 150%;
+                font-size: 230%;
             }
             &:active {
-                font-size: 100%;
+                font-size: 150%;
             }
         }
         &.workspace-overview {
             border-radius: $border-radius;
-            min-width: $workspace-overview-button-width;
             color: $base05;
+            padding: 0rem 1.2rem;
         }
     }
 }
 .toggle-dashboard-button {
-    border-radius:  $border-radius;
+    border-radius: $border-radius;
     transition: all 50ms ease-in-out;
-    font-size: 125%;
+    font-size: 185%;
     min-width: 1.6rem;
     color: $base07;
     min-height: 2rem;
     background-color: $base00;
     &:hover {
-        font-size: 150%;
+        font-size: 215%;
         background-color: $base01;
     }
     &:active {
-        font-size: 100%;
+        font-size: 150%;
     }
 }
 window.start-menu {
@@ -130,47 +133,30 @@ window.start-menu {
             color: $base05;
             transition: all 150ms ease-in-out;
             padding: 10px;
-            font-weight: 500;
+            font-weight: 600;
 
-            .folder-button-icon, .app-button-icon {
-                
-                font-size: 3rem;
+            .folder-button-icon, .app-button-icon {                
                 transition: all 150ms ease-in-out;
-            }
-            .app-button-icon {
                 min-width: 3rem;
                 min-height: 3rem;
             }
+            .app-button-icon {
+                font-size: 3rem;
+            }
             .folder-button-icon {
-                min-width: 3rem;
-                min-height: 4rem;
-            }
-            .home-icon {
-                margin-left: -1.25rem;
-            }
-            .downloads-icon {
-                margin-left: -1.25rem;
-            }
-            .projects-icon {
-                margin-left: -1.25rem;
+                font-size: 4rem;
+                min-height: 5rem;
             }
             &:hover {
                 background-color: $base02;
             }
             &:active {
                 background-color: $base03;
-                .folder-button-icon, .app-button-icon {
+                .folder-button-icon {
+                    font-size: 3rem;
+                }
+                .app-button-icon {
                     font-size: 2rem;
-                }
-
-                .home-icon {
-                    margin-left: -0.775rem;
-                }
-                .downloads-icon {
-                    margin-left: -0.775rem;
-                }
-                .projects-icon {
-                    margin-left: -0.775rem;
                 }
             }
         }
@@ -203,7 +189,6 @@ window.start-menu {
                 }
                 icon {
                     font-size: 3em;
-                    margin-right: .3rem;
                 }
 
                 label.name {
