@@ -4,6 +4,7 @@ import { bind } from 'astal';
 import { WidgetContainer } from '../../WidgetContainer';
 import { DASHBOARD_IS_OPEN } from '../../DashboardScreen';
 import { hyprland } from '../../../../utils/hyprland';
+import Pango from 'gi://Pango?version=1.0';
 
 function lengthStr(length: number) {
 	const min = Math.floor(length / 60);
@@ -56,6 +57,8 @@ function MediaPlayer({ player }: { player: Mpris.Player }) {
 				<label
 					className="title"
 					truncate
+					maxWidthChars={18}
+					ellipsize={Pango.EllipsizeMode.END}
 					hexpand
 					halign={START}
 					label={title}
@@ -120,7 +123,7 @@ export default function MprisPlayers() {
 	return (
 		<>
 			{bind(mpris, 'players').as(arr =>
-				arr.map(player => <MediaPlayer player={player} />),
+				arr.filter((player) => (player.busName === "org.mpris.MediaPlayer2.spotify")).map(player => <MediaPlayer player={player} />),
 			)}
 		</>
 	);

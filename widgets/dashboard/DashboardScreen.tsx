@@ -47,6 +47,7 @@ export function DashboardScreen() {
 							<VolumeWidget />
 						</box>
 					</box>
+
 				</box>
 			</scrollable>
 		</window>
