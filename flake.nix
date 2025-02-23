@@ -21,6 +21,8 @@
       hyprland
       battery
       apps
+      mpris
+      wireplumber
       pkgs.libgtop
       pkgs.libsoup_3
       pkgs.libgda

@@ -10,7 +10,7 @@ export function WidgetContainer(props: {
 		<box
 			css={"background-color: @base00; border-radius: 1rem; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);"}
 			className={props.className}
-			valign={Gtk.Align.START}
+			valign={Gtk.Align.FILL}
 			halign={Gtk.Align.START}
 			vertical
 		>
