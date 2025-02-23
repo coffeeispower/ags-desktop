@@ -166,7 +166,6 @@ export function DeeplWidget() {
 							buffer={new Gtk.TextBuffer({ text: t })}
 							wrapMode={Gtk.WrapMode.CHAR}
 							editable={false}
-                            canFocus={false}
 						/>
 					))}
 				</box>
