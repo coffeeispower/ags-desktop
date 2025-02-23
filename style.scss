@@ -225,119 +225,120 @@ window.start-menu {
 
 
 window#dashboard {
-    &>.dashboard-container {
-        padding: 20px;
-        color: $base05;
-        .system-monitor-widget {
-            min-width: 30rem;
-            .widget-body {
-                label.icon {
-                    min-width: 1.5rem;
-                    font-size: 1.5rem;
-                    margin: 0.8rem 1.0rem;
-                }
-                label.label {
-                    font-size: 1rem;
-                    min-width: 5rem;
-                    font-weight: 600;
-                }
-                label.indicator {
-                    font-size: 0.7rem;
-                    min-width: 7rem;
-                }
-                levelbar block {
-                    min-height: 0.7rem;
-                    &.empty {
-                        min-width: 12rem;
-                    }
-                    &.filled.low {
-                        background-color: $base0B;
-                    }
-                    &.filled.medium {
-                        background-color: $base0A;
-                    }
-                    &.filled.high {
-                        background-color: $base08;
-                    }
-                }
-                .cpu-container, .ram-container {
-                    margin-left: 10px;
-                    margin-right: 8px;
-                }
-                .disks-container {
-                    padding-left: 10px;
-                    padding-right: 10px;
-                    margin-top: 1rem;
-                    border-top: 1px solid $base03;
-                    .disks-list {
-                        padding-left: 15px;
-                        padding-right: 15px;
-                        margin: 20px 0px;
-                        .device-name {
-                            min-width: 5rem;
-                            font-family: monospace;
-                        }
-                        .arrow {
-                            min-width: 3rem;
-                        }
-                        .mountpoint {
-                            font-family: monospace;
-                            min-width: 5rem;
-                            &.mountpoint-swap {
-                                font-family: sans-serif;
-                                color: $base0B;
-                                font-weight: 700;
-                            }
-                        }
-                    }
-                }
+    padding: 20px;
+    color: $base05;
+    // flowbox {
+    //     border: 1px dashed green;
+    // }
+    // & > flowbox > * {
+    //     border: 1px dashed red;
+    // }
+    .system-monitor-widget {
+        min-width: 30rem;
+        .widget-body {
+            label.icon {
+                min-width: 1.5rem;
+                font-size: 1.5rem;
+                margin: 0.8rem 1.0rem;
             }
-        }
-        .widget-header {
-            border-bottom: 1px solid $base03;
-            padding: 1rem 2rem;
-            margin-bottom: 1rem;
-            .widget-icon {
-                font-size: 24px;
-                &.widget-icon.widget-icon-resource-monitor {
-                    color: $base0B;
-                }
-            }
-            .widget-title {
+            label.label {
+                font-size: 1rem;
+                min-width: 5rem;
                 font-weight: 600;
             }
+            label.indicator {
+                font-size: 0.7rem;
+                min-width: 7rem;
+            }
+            levelbar block {
+                min-height: 0.7rem;
+                &.empty {
+                    min-width: 12rem;
+                }
+                &.filled.low {
+                    background-color: $base0B;
+                }
+                &.filled.medium {
+                    background-color: $base0A;
+                }
+                &.filled.high {
+                    background-color: $base08;
+                }
+            }
+            .cpu-container, .ram-container {
+                margin-left: 10px;
+                margin-right: 8px;
+            }
+            .disks-container {
+                padding-left: 10px;
+                padding-right: 10px;
+                margin-top: 1rem;
+                border-top: 1px solid $base03;
+                .disks-list {
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    margin: 20px 0px;
+                    .device-name {
+                        min-width: 5rem;
+                        font-family: monospace;
+                    }
+                    .arrow {
+                        min-width: 3rem;
+                    }
+                    .mountpoint {
+                        font-family: monospace;
+                        min-width: 5rem;
+                        &.mountpoint-swap {
+                            font-family: sans-serif;
+                            font-weight: 500;
+                            opacity: 0.96;
+                        }
+                    }
+                }
+            }
         }
-        .deepl-widget {
-            .widget-header {
-                padding-right: 0px;
+    }
+    .widget-header {
+        border-bottom: 1px solid $base03;
+        padding: 1rem 2rem;
+        margin-bottom: 1rem;
+        .widget-icon {
+            font-size: 24px;
+        }
+        .widget-title {
+            font-weight: 600;
+        }
+    }
+    .deepl-widget {
+        .widget-header {
+            padding-right: 0px;
+        }
+        textview, textview text {
+            padding: 1rem;
+            font-size: 1rem;
+            background-color: transparent;
+        }
+        combobox button {
+            border-radius: 0;
+            background-color: transparent;
+            &:hover {
+                background-color: $base02;
             }
-            textview, textview text {
-                padding: 1rem;
-                font-size: 1rem;
-                background-color: transparent;
-            }
-            combobox button {
-                border-radius: 0;
-                background-color: transparent;
-                &:hover {
-                    background-color: $base02;
-                }
-                border-bottom: 1px solid $base03;
-            }
-            & .input-side, & .output-side {
-                min-width: 20rem;
-                min-height: 20rem;
-            }
-            .input-side {
-                border-right: 1px solid $base03;
-            }
-            .swap-languages-button {
-                margin-left: 24rem;
-                margin-right: 1rem;
-                background-color: transparent;
-                &:hover {
-                    background-color: $base02;
-                }
+            border-bottom: 1px solid $base03;
+        }
+        & .input-side, & .output-side {
+            min-width: 20rem;
+            min-height: 20rem;
+        }
+        .input-side {
+            border-right: 1px solid $base03;
+        }
+        .swap-languages-button {
+            margin-left: 24rem;
+            margin-right: 1rem;
+            background-color: transparent;
+            &:hover {
+                background-color: $base02;
             }
         }
     }

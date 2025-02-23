@@ -29,17 +29,16 @@ export function DashboardScreen() {
 			onHide={() => {
 				DASHBOARD_IS_OPEN.set(false);
 			}}
+			
 		>
-			<box className={'dashboard-container'}>
-				<FlowBox selectionMode={Gtk.SelectionMode.NONE}>
-					<FlowBoxChild canFocus={false}>
-						<ResourceMonitorWidget />
-					</FlowBoxChild>
-					<FlowBoxChild canFocus={false}>
-						<DeeplWidget />
-					</FlowBoxChild>
-				</FlowBox>
+			<scrollable vexpand hexpand>
+			<box valign={Gtk.Align.CENTER} css={"padding: 3rem"} halign={Gtk.Align.CENTER} spacing={96} vertical>
+				<box valign={Gtk.Align.CENTER} halign={Gtk.Align.CENTER} spacing={70}>
+					<ResourceMonitorWidget />
+					<DeeplWidget />
+				</box>
 			</box>
+			</scrollable>
 		</window>
 	);
 }

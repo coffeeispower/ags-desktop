@@ -8,9 +8,7 @@ export function WidgetContainer(props: {
 }) {
 	return (
 		<box
-			css={glassCss({
-				transparency: 0.7,
-			})}
+			css={"background-color: @base00; border-radius: 1rem; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);"}
 			className={props.className}
 			valign={Gtk.Align.START}
 			halign={Gtk.Align.START}
