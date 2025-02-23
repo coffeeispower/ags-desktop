@@ -97,7 +97,7 @@ export function StartMenu() {
 							}}
 							halign={Gtk.Align.START}
 						>
-							← Voltar
+							← 戻る
 						</button>
 						<AppLauncher
 							setup={(e, t) => {
