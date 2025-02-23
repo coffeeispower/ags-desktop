@@ -1,3 +1,0 @@
-[submodule "vendor/troll"]
-	path = vendor/troll
-	url = https://github.com/sonnyp/troll
