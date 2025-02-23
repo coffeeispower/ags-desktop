@@ -46,8 +46,6 @@ function FolderIcon(props: {
 					hasFocus={false}
 					canFocus={false}
 					label={props.name}
-					wrap
-					maxWidthChars={10}
 				/>
 			</box>
 		</button>

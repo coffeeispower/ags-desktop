@@ -3,6 +3,7 @@ import { Gtk } from 'astal/gtk3';
 import Variable from 'astal/variable';
 import { FlowBox } from '../flowbox';
 import { closeStartMenu } from './StartMenu';
+import Pango from 'gi://Pango?version=1.0';
 
 function AppIcon({ app }: { app: AstalApps.Application }) {
 	return (
@@ -37,7 +38,9 @@ function AppIcon({ app }: { app: AstalApps.Application }) {
 					canFocus={false}
 					label={app.name.replaceAll(/\(.*\)/g, '').trim()}
 					wrap
-					maxWidthChars={10}
+					maxWidthChars={13}
+					hexpand
+					ellipsize={Pango.EllipsizeMode.END}
 				/>
 			</box>
 		</button>
