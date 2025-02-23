@@ -2,6 +2,8 @@ import { Astal, Gtk } from 'astal/gtk3';
 import Mpris from 'gi://AstalMpris';
 import { bind } from 'astal';
 import { WidgetContainer } from '../../WidgetContainer';
+import { DASHBOARD_IS_OPEN } from '../../DashboardScreen';
+import { hyprland } from '../../../../utils/hyprland';
 
 function lengthStr(length: number) {
 	const min = Math.floor(length / 60);
@@ -37,11 +39,18 @@ function MediaPlayer({ player }: { player: Mpris.Player }) {
 
 	return (
 		<WidgetContainer className="media-player">
-			<box
+			<button
 				className="cover-art"
 				css={coverArt}
 				halign={Gtk.Align.CENTER}
 				hexpand={false}
+				cursor={"pointer"}
+				onClicked={() => {
+					const spotifyWindow = hyprland.clients.find(c => c.class === 'spotify');
+					if(!spotifyWindow) return;
+					DASHBOARD_IS_OPEN.set(false);
+					spotifyWindow.focus();
+				}}
 			/>
 			<box valign={Gtk.Align.CENTER} vertical>
 				<label

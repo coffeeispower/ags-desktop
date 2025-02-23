@@ -1,6 +1,6 @@
 import Hyprland from 'gi://AstalHyprland?version=0.1';
 import Variable from 'astal/variable';
-const hyprland = Hyprland.get_default();
+export const hyprland = Hyprland.get_default();
 export function toggleWorkspaceOverview() {
 	return hyprland.dispatch('hyprexpo:expo', 'toggle');
 }

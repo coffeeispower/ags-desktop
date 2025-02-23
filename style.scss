@@ -237,7 +237,8 @@ window#dashboard {
     .media-player {
         padding: 1rem;
 
-        box.cover-art {
+        .cover-art {
+            all: unset;
             min-height: 200px;
             min-width: 200px;
             border-radius: 9px;
