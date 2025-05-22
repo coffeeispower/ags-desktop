@@ -50,7 +50,7 @@ const fallback = {
 	base0F: '#f2cdcd',
 };
 colorScheme = tryLoadFile(`${SRC}/colors.json`);
-if (!colorScheme) colorScheme = tryLoadFile('/etc/stylix/generated.json');
+if (!colorScheme) colorScheme = tryLoadFile('/etc/stylix/palette.json');
 if (!colorScheme) colorScheme = fallback;
 
 export const isLightTheme =
